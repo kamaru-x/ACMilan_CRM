@@ -52,7 +52,7 @@
                         <select name="coordinator" id="" class="form-control">
                             <option value="">Select Coordinator</option>
                             {% for coordinator in coordinators %}
-                                <option value="{{ coordinator.id }}">{{ coordinator.first_name }}</option>
+                                <option value="{{ coordinator.id }}">{{ coordinator.User.first_name }}</option>
                             {% endfor %}
                         </select>
                     </div>

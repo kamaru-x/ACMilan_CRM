@@ -36,11 +36,21 @@
 
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-2" class="form-label">Center 1</label>
-                        <input id="input-wizard-2" type="text" class="form-control" placeholder="Enter cordinator Center" name="center1">
+                        <select name="center1" id="" class="form-control">
+                            <option value="">select first center</option>
+                            {% for center in centers %}
+                                <option value="{{center.id}}">{{ center.Name }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-3" class="form-label">Center 2</label>
-                        <input id="input-wizard-3" type="text" class="form-control" placeholder="Enter Coordinator Center" name="center2">
+                        <label for="input-wizard-2" class="form-label">Center 2</label>
+                        <select name="center2" id="" class="form-control">
+                            <option value="">select second center</option>
+                            {% for center in centers %}
+                                <option value="{{center.id}}">{{ center.Name }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
 
                     <div class="intro-y col-span-12 sm:col-span-6">

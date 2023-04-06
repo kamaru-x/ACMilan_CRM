@@ -10,8 +10,8 @@ class User(AbstractUser):
     is_centre = models.BooleanField(default=False)
     is_student = models.BooleanField(default=False)
     # Additional Data
-    Center1 = models.CharField(max_length=50,null=True)
-    Center2 = models.CharField(max_length=50,null=True)
-    Mobile = models.CharField(max_length=15,null=True)
-    Mobile2 = models.CharField(max_length=15,null=True)
-    Address = models.CharField(max_length=50,null=True)
+    # Center1 = models.CharField(max_length=50,null=True)
+    # Center2 = models.CharField(max_length=50,null=True)
+    # Mobile = models.CharField(max_length=15,null=True)
+    # Mobile2 = models.CharField(max_length=15,null=True)
+    # Address = models.CharField(max_length=50,null=True)

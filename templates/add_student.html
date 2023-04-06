@@ -30,46 +30,55 @@
                         <input id="input-wizard-2" type="text" class="form-control" placeholder="" name="reference" value="{{ refer }}" readonly>
                     </div>
                     <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="input-wizard-2" class="form-label">Select Center</label>
+                        <select name="center" id="" class="form-control">
+                            <option value="">select center</option>
+                            {% for center in centers %}
+                                <option value="{{ center.id }}">{{ center.Name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-3" class="form-label">Full Name</label>
                         <input id="input-wizard-3" type="text" class="form-control" placeholder="Enter Full Name here" name="full_name">
                     </div>
-
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-2" class="form-label">Street Address</label>
                         <input id="input-wizard-2" type="text" class="form-control" placeholder="Enter Street Address here" name="street_address">
                     </div>
+
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-3" class="form-label">City</label>
                         <input id="input-wizard-3" type="text" class="form-control" placeholder="Enter City here" name="city">
                     </div>
-
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-2" class="form-label">State</label>
                         <input id="input-wizard-2" type="text" class="form-control" placeholder="Enter State here" name="state">
                     </div>
+
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-2" class="form-label">Zip Code</label>
                         <input id="input-wizard-2" type="number" class="form-control" placeholder="Enter Zip code here" name="zipcode">
                     </div>
-
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-2" class="form-label">Phone</label>
                         <input id="input-wizard-2" type="text" class="form-control" placeholder="Enter Phone Number" name="phone">
                     </div>
+
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-2" class="form-label">Email</label>
                         <input id="input-wizard-2" type="email" class="form-control" placeholder="Enter Email here" name="email">
                     </div>
-
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-2" class="form-label">Guardian Name</label>
                         <input id="input-wizard-2" type="text" class="form-control" placeholder="Enter Guardian mobile" name="guardian_name">
                     </div>
+
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-2" class="form-label">Guardian Mobile</label>
                         <input id="input-wizard-2" type="text" class="form-control" placeholder="Enter Guardian mobile number" name="guardian_mobile">
                     </div>
-
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-2" class="form-label">Attached id proof</label>
                         <select name="attached_proof" id="" class="form-control">
@@ -78,28 +87,29 @@
                             <option value="passport">Passport</option>
                         </select>
                     </div>
+
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-2" class="form-label">Date of Birth</label>
                         <input id="input-wizard-2" type="date" class="form-control" placeholder="Enter Guardian mobile" name="date_of_birth">
                     </div>
-
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-2" class="form-label">Age Group</label>
                         <select name="age_group" id="" class="form-control">
                             <option value="">select age group</option>
                             <option value="4-13">4-13</option>
-                            <option value="14-13">14-17</option>
+                            <option value="14-17">14-17</option>
                         </select>
                     </div>
+
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-2" class="form-label">Preferd Location</label>
                         <input id="input-wizard-2" type="text" class="form-control" placeholder="Enter preferd location" name="preferd_location">
                     </div>
-
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-2" class="form-label">Mode of Travel</label>
                         <input id="input-wizard-2" type="text" class="form-control" placeholder="Enter mode of travel" name="mode_of_travel">
                     </div>
+
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-2" class="form-label">Playing Position</label>
                         <input id="input-wizard-2" type="text" class="form-control" placeholder="Enter playing position" name="playing_position">

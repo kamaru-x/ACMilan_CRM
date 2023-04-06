@@ -3,7 +3,7 @@ from django.urls import path
 
 urlpatterns = [
     path('add_center/',views.add_center,name='add_center'),
-    path('list_leads/',views.list_center,name='list_center'),
+    path('list-centers/',views.list_center,name='list_center'),
     path('add-coordinator/',views.add_coordinator,name='add_cordinator'),
     path('list-coordinators/',views.list_coordinators,name='list_cordinator'),
     path('add-lead/',views.add_lead,name='add_lead'),

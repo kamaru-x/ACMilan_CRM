@@ -1,36 +1,82 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from u_auth.models import User
-from Core.models import Lead,Students
+from Core.models import Lead,Students,Center,Coordinator
 # Create your views here.
 
 @login_required
+def add_center(request):
+    center = Center.objects.last()
+
+    if center:
+        refer = f'CENTER-00{center.id+1}'
+    else:
+        refer = 'CENTER-001'
+
+    if request.method == 'POST':
+        center = request.POST.get('center')
+        new_center = Center(Reference=refer,Name=center)
+        new_center.save()
+        return redirect('list_center')
+
+    context = {
+        'refer' : refer,
+    }
+    return render(request,'add_center.html',context)
+
+###########################################################################################################
+
+@login_required
+def list_center(request):
+    centers = Center.objects.all()
+    context = {
+        'centers':centers
+    }
+    return render(request,'list_center.html',context)
+
+###########################################################################################################
+
+@login_required
 def add_coordinator(request):
+    centers = Center.objects.all()
+
     if request.method ==  'POST':
         f_name = request.POST.get('first_name')
         l_name = request.POST.get('last_name')
-        center1 = request.POST.get('center1')
-        center2 = request.POST.get('center2')
-        number1 = request.POST.get('number1')
-        number2 = request.POST.get('number2')
         email = request.POST.get('email')
-        place = request.POST.get('place')
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        user = User.objects.create(first_name=f_name,last_name=l_name,Center1=center1,Center2=center2,email=email,
-        Mobile=number1,Mobile2=number2,Address=place,username=username,is_coordinator=True)
+        c1 = request.POST.get('center1')
+        c2 = request.POST.get('center2')
+        center1 = Center.objects.get(id=c1)
+        center2 = Center.objects.get(id=c2)
+        number1 = request.POST.get('number1')
+        number2 = request.POST.get('number2')
+        place = request.POST.get('place')
+
+        user = User.objects.create(first_name=f_name,last_name=l_name,email=email,
+        username=username,is_coordinator=True)
         user.save()
         user.set_password(password)
         user.save()
+
+        new_cordinator = Coordinator(User=user,Center1=center1,Center2=center2,Number1=number1,Number2=number2,Place=place)
+        new_cordinator.save()
+
         return redirect('list_cordinator')
-    return render(request,'add_cordinator.html')
+    
+    context = {
+        'centers':centers
+    }
+
+    return render(request,'add_cordinator.html',context)
 
 ###########################################################################################################
 
 @login_required
 def list_coordinators(request):
-    coordinators = User.objects.filter(is_coordinator=True)
+    coordinators = Coordinator.objects.all()
 
     context = {
         'coordinators' : coordinators,
@@ -41,7 +87,7 @@ def list_coordinators(request):
 
 @login_required
 def add_lead(request):
-    coordinators = User.objects.filter(is_coordinator=True)
+    coordinators = Coordinator.objects.all()
     lead = Lead.objects.last()
     
     if lead:
@@ -55,7 +101,7 @@ def add_lead(request):
         contact = request.POST.get('contact')
         location = request.POST.get('location')
         c_id = request.POST.get('coordinator')
-        coordinator = User.objects.get(id=c_id)
+        coordinator = Coordinator.objects.get(id=c_id)
         mode = request.POST.get('mode')
         mode_text = request.POST.get('mode_text')
 
@@ -95,12 +141,16 @@ def view_lead(request,id):
 @login_required
 def add_student(request):
     student = Students.objects.last()
+    centers = Center.objects.all()
+
     if student:
         refer = f'STUDENT-00{student.id+1}'
     else:
         refer = 'STUDENT-001'
 
     if request.method == 'POST':
+        c = request.POST.get('center')
+        center = Center.objects.get(id=c)
         full_name = request.POST.get('full_name')
         street_address = request.POST.get('street_address')
         city = request.POST.get('city')
@@ -127,12 +177,13 @@ def add_student(request):
                                ID_Proof=attached_proof,Date_Of_Birth=date_of_birth,Age_Group=age_group,
                                Preferred_Location=preferd_location,Travel_Mode=mode_of_travel,
                                Playing_Position=playing_position,School_Name=school_name,School_Address=school_address,
-                               Study_Standard=standard,Study_Devision=division)
+                               Study_Standard=standard,Study_Devision=division,Center=center)
         new_student.save()
         return redirect('.')
 
     context = {
-        'refer' : refer
+        'refer' : refer,
+        'centers' : centers
     }
     return render(request,'add_student.html',context)
 
@@ -147,13 +198,3 @@ def list_students(request):
     return render(request,'list_students.html',context)
 
 ###########################################################################################################
-
-@login_required
-def add_center(request):
-    return render(request,'add_center.html')
-
-###########################################################################################################
-
-@login_required
-def list_center(request):
-    return render(request,'list_center.html')

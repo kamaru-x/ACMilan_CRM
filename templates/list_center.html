@@ -42,39 +42,31 @@
                         <!-- <th class="whitespace-nowrap">
                             <input class="form-check-input" type="checkbox">
                         </th> -->
-                        <th class="whitespace-nowrap">SL. NO.</th>
-                        <th class="whitespace-nowrap">REF. NO.</th>
-                        <th class="text-center whitespace-nowrap">ADDED ON</th>
-                        <th class="whitespace-nowrap">CATEGORY NAME</th>
-                        <th class="whitespace-nowrap">NUMBER OF PRODUCTS</th>
-                        <th class="text-center whitespace-nowrap">ACTIONS</th>
+                        <th class="whitespace-nowrap text-center">SL. NO.</th>
+                        <th class="whitespace-nowrap text-center">REF. NO.</th>
+                        <th class="whitespace-nowrap text-center">CENTER</th>
+                        <th class="whitespace-nowrap text-center">NUMBER OF STUDENTS</th>
+                        <th class="whitespace-nowrap text-center">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% for center in centers %}
                         <tr class="intro-x">
-                            
-                            <td class="w-40">
-                                <a href="" class=" whitespace-nowrap">1</a>
-                            </td>
-                            <td class="w-40">
-                                <a href="category-view.php" class="font-medium whitespace-nowrap">REF:1234</a>
-                                 
+                            <td class="text-center">
+                                <a href="" class=" whitespace-nowrap">{{forloop.counter}}</a>
                             </td>
                             <td class="text-center">
-                                <div class="flex items-center justify-center whitespace-nowrap text-success">
-                                     2/10/2023
-                                </div>
+                                <a href="category-view.php" class="font-medium whitespace-nowrap">{{ center.Reference }}</a>  
                             </td>
-                            <td class="w-64 text-primary">
-                                <div>Category Name Here</div>
+                            <td class="text-primary text-center">
+                                <div>{{ center.Name }}</div>
                             </td>
-                            <td>
-                             <div class="whitespace-nowrap">43</div>
+                            <td class="text-center">
+                                <div class="whitespace-nowrap">{{ center.Students }}</div>
                             </td>
-                            
                             <td class="table-report__action">
                                 <div class="flex justify-center items-center">
-                                   <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-view.php" title="view">
+                                    <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-view.php" title="view">
                                         <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
                                     </a>
                                     <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-edit.php" title="edit">
@@ -83,319 +75,15 @@
                                     <a class="flex items-center text-danger whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" title="delete">
                                         <i data-lucide="trash" class="w-4 h-4 mr-1"></i> 
                                     </a>&nbsp &nbsp
-                                   
                                 </div>
                             </td>
                         </tr>
-
-                        <tr class="intro-x">
-                            
-                            <td class="w-40">
-                                <a href="" class=" whitespace-nowrap">2</a>
-                            </td>
-                            <td class="w-40">
-                                <a href="category-view.php" class="font-medium whitespace-nowrap">REF:1234</a>
-                                 
-                            </td>
-                            <td class="text-center">
-                                <div class="flex items-center justify-center whitespace-nowrap text-success">
-                                     2/10/2023
-                                </div>
-                            </td>
-                             <td class="w-64 text-primary">
-                                <div>Category Name Here</div>
-                            </td>
-                            <td>
-                             <div class="whitespace-nowrap">43</div>
-                            </td>
-                           
-                            <td class="table-report__action">
-                                <div class="flex justify-center items-center">
-                                   <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-view.php" title="view">
-                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
-                                    </a>
-                                    <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-edit.php" title="edit">
-                                        <i data-lucide="edit" class="w-4 h-4 mr-1"></i> 
-                                    </a>
-                                    <a class="flex items-center text-danger whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" title="delete">
-                                        <i data-lucide="trash" class="w-4 h-4 mr-1"></i> 
-                                    </a>&nbsp &nbsp
-                                   
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr class="intro-x">
-                           
-                            <td class="w-40">
-                                <a href="" class=" whitespace-nowrap">3</a>
-                            </td>
-                            <td class="w-40">
-                                <a href="category-view.php" class="font-medium whitespace-nowrap">REF:1234</a>
-                                 
-                            </td>
-                            <td class="text-center">
-                                <div class="flex items-center justify-center whitespace-nowrap text-success">
-                                     2/10/2023
-                                </div>
-                            </td>
-                            <td class="w-64 text-primary">
-                                <div>Category Name Here</div>
-                            </td>
-                            <td>
-                             <div class="whitespace-nowrap">43</div>
-                            </td>
-                            
-                            <td class="table-report__action">
-                                <div class="flex justify-center items-center">
-                                   <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-view.php" title="view">
-                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
-                                    </a>
-                                    <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-edit.php" title="edit">
-                                        <i data-lucide="edit" class="w-4 h-4 mr-1"></i> 
-                                    </a>
-                                    <a class="flex items-center text-danger whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" title="delete">
-                                        <i data-lucide="trash" class="w-4 h-4 mr-1"></i> 
-                                    </a>&nbsp &nbsp
-                                    
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr class="intro-x">
-                           
-                            <td class="w-40">
-                                <a href="" class="whitespace-nowrap">4</a>
-                            </td>
-                            <td class="w-40">
-                                <a href="category-view.php" class="font-medium whitespace-nowrap">REF:1234</a>
-                                 
-                            </td>
-                            <td class="text-center">
-                                <div class="flex items-center justify-center whitespace-nowrap text-success">
-                                     2/10/2023
-                                </div>
-                            </td>
-                            <td class="w-64 text-primary">
-                                <div>Category Name Here</div>
-                            </td>
-                            <td>
-                             <div class="whitespace-nowrap">43</div>
-                            </td>
-                            
-                            <td class="table-report__action">
-                                <div class="flex justify-center items-center">
-                                   <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-view.php" title="view">
-                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
-                                    </a>
-                                    <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-edit.php" title="edit">
-                                        <i data-lucide="edit" class="w-4 h-4 mr-1"></i> 
-                                    </a>
-                                    <a class="flex items-center text-danger whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" title="delete">
-                                        <i data-lucide="trash" class="w-4 h-4 mr-1"></i> 
-                                    </a>&nbsp &nbsp
-                                   
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr class="intro-x">
-                            
-                            <td class="w-40">
-                                <a href="" class="whitespace-nowrap">5</a>
-                            </td>
-                            <td class="w-40">
-                                <a href="category-view.php" class="font-medium whitespace-nowrap">REF:1234</a>
-                                 
-                            </td>
-                            <td class="text-center">
-                                <div class="flex items-center justify-center whitespace-nowrap text-success">
-                                     2/10/2023
-                                </div>
-                            </td>
-                            <td class="w-64 text-primary">
-                                <div>Category Name Here</div>
-                            </td>
-                            <td>
-                             <div class="whitespace-nowrap">43</div>
-                            </td>
-                            
-                            <td class="table-report__action">
-                                <div class="flex justify-center items-center">
-                                   <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-view.php" title="view">
-                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
-                                    </a>
-                                    <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-edit.php" title="edit">
-                                        <i data-lucide="edit" class="w-4 h-4 mr-1"></i> 
-                                    </a>
-                                    <a class="flex items-center text-danger whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" title="delete">
-                                        <i data-lucide="trash" class="w-4 h-4 mr-1"></i> 
-                                    </a>&nbsp &nbsp
-                                    
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr class="intro-x">
-                            
-                            <td class="w-40">
-                                <a href="" class=" whitespace-nowrap">7</a>
-                            </td>
-                            <td class="w-40">
-                                <a href="category-view.php" class="font-medium whitespace-nowrap">REF:1234</a>
-                                 
-                            </td>
-                            <td class="text-center">
-                                <div class="flex items-center justify-center whitespace-nowrap text-success">
-                                    2/10/2023
-                                </div>
-                            </td>
-                            <td class="w-64 text-primary">
-                                <div>Category Name Here</div>
-                            </td>
-                            <td>
-                             <div class="whitespace-nowrap">43</div>
-                            </td>
-                            
-                            <td class="table-report__action">
-                                <div class="flex justify-center items-center">
-                                   <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-view.php" title="view">
-                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
-                                    </a>
-                                    <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-edit.php" title="edit">
-                                        <i data-lucide="edit" class="w-4 h-4 mr-1"></i> 
-                                    </a>
-                                    <a class="flex items-center text-danger whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" title="delete">
-                                        <i data-lucide="trash" class="w-4 h-4 mr-1"></i> 
-                                    </a>&nbsp &nbsp
-                                    
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr class="intro-x">
-                            <td class="w-40">
-                                <a href="" class="whitespace-nowrap">8</a>
-                            </td>
-                            <td class="w-40">
-                                <a href="category-view.php" class="font-medium whitespace-nowrap">REF:1234</a>
-                                  
-                             </td>
-                            <td class="text-center">
-                                <div class="flex items-center justify-center whitespace-nowrap text-success">
-                                    2/10/2023
-                                </div>
-                            </td>
-                            <td class="w-64 text-primary">
-                                <div>Category Name Here</div>
-                            </td>
-                            <td>
-                             <div class="whitespace-nowrap">43</div>
-                            </td>
-                            
-                            <td class="table-report__action">
-                                <div class="flex justify-center items-center">
-                                   <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-view.php" title="view">
-                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
-                                    </a>
-                                    <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-edit.php" title="edit">
-                                        <i data-lucide="edit" class="w-4 h-4 mr-1"></i> 
-                                    </a>
-                                    <a class="flex items-center text-danger whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" title="delete">
-                                        <i data-lucide="trash" class="w-4 h-4 mr-1"></i> 
-                                    </a>&nbsp &nbsp
-                                   
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr class="intro-x">
-                            <td class="w-40">
-                                <a href="" class="whitespace-nowrap">9</a>
-                            </td>
-                            <td class="w-40">
-                                <a href="category-view.php" class="font-medium whitespace-nowrap">REF:1234</a>
-                               
-                             </td>
-                            <td class="text-center">
-                                <div class="flex items-center justify-center whitespace-nowrap text-success">
-                                     2/10/2023
-                                </div>
-                            </td>
-                            <td class="w-64 text-primary">
-                                <div>Category Name Here</div>
-                            </td>
-                            <td>
-                             <div class="whitespace-nowrap">43</div>
-                            </td>
-                            
-                            <td class="table-report__action">
-                                <div class="flex justify-center items-center">
-                                   <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-view.php" title="view">
-                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
-                                    </a>
-                                    <a class="flex items-center text-primary whitespace-nowrap mr-5" href="category-edit.php" title="edit">
-                                        <i data-lucide="edit" class="w-4 h-4 mr-1"></i> 
-                                    </a>
-                                    <a class="flex items-center text-danger whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" title="delete">
-                                        <i data-lucide="trash" class="w-4 h-4 mr-1"></i> 
-                                    </a>
-                                   
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
         <!-- END: Data List -->
         <!-- BEGIN: Pagination -->
-        <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-            <nav class="w-full sm:w-auto sm:mr-auto">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#">
-                            <i class="w-4 h-4" data-lucide="chevrons-left"></i>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">
-                            <i class="w-4 h-4" data-lucide="chevron-left"></i>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">...</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">...</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">
-                            <i class="w-4 h-4" data-lucide="chevron-right"></i>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">
-                            <i class="w-4 h-4" data-lucide="chevrons-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <select class="w-20 form-select box mt-3 sm:mt-0">
-                <option>10</option>
-                <option>25</option>
-                <option>35</option>
-                <option>50</option>
-            </select>
-        </div>
         <!-- END: Pagination -->
     </div>
     <!-- BEGIN: Delete Confirmation Modal -->
