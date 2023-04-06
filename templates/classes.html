@@ -6,7 +6,7 @@
         <!-- BEGIN: Content -->
     <div class="content">
 
-    <h2 class="intro-y text-lg font-medium mt-10" style="text-align: center;font-size: 35px;color:#1e40af;padding-top: 30px;padding-bottom: 30px;border-bottom: solid 1px #bcbcbc;">Attandance</h2>
+    <h2 class="intro-y text-lg font-medium mt-10" style="text-align: center;font-size: 35px;color:#1e40af;padding-top: 30px;padding-bottom: 30px;border-bottom: solid 1px #bcbcbc;">Sections</h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
             
@@ -16,10 +16,11 @@
                 <button class="btn btn-outline-secondary shadow-md mr-2">
                     <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel
                 </button> -->
+                <a data-tw-toggle="modal" data-tw-target="#update_model"><button class="btn btn-primary shadow-md mr-2">Add Section</button></a>
                 <div class="dropdown ml-auto sm:ml-0">
-                    <!-- <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
+                    <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                         <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
-                    </button> -->
+                    </button>
                     <div class="dropdown-menu w-40">
                         <ul class="dropdown-content">
                             <li>
@@ -39,45 +40,42 @@
                 <thead>
                     <tr>
                         <th class="whitespace-nowrap text-center">SL. NO.</th>
-                        <th class="whitespace-nowrap text-center">STUDENT NAME</th>
-                        <!-- <th class="whitespace-nowrap text-center">STUDENT REFERENCE</th> -->
-                        <!-- <th class="whitespace-nowrap text-center">SECTION REFERENCE</th> -->
-                        <th class="whitespace-nowrap text-center">ATTANDANCE</th>
-                        <!-- <th class="whitespace-nowrap text-center">ACTIONS</th> -->
+                        <th class="whitespace-nowrap text-center">REF. NO.</th>
+                        <th class="whitespace-nowrap text-center">SECTION DATE</th>
+                        <th class="whitespace-nowrap text-center">FROM</th>
+                        <th class="whitespace-nowrap text-center">TO</th>
+                        <th class="whitespace-nowrap text-center">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for student in students %}
+                    {% for section in sections %}
                         <tr class="intro-x">
                             <td class="text-center">
                                 <a href="" class=" whitespace-nowrap">{{forloop.counter}}</a>
                             </td>
                             <td class="text-center">
-                                <a href="category-view.php" class="font-medium whitespace-nowrap">{{ student.Full_Name }}</a> 
+                                <a href="category-view.php" class="font-medium whitespace-nowrap">{{ section.Reference }}</a> 
                             </td>
                             <td class="text-primary text-center">
-                                <div><input type="checkbox" class=""></div>
+                                <div>{{ section.Date }}</div>
                             </td>
-                            <!-- <td class="text-center">
+                            <td class="text-center">
                                 <div class="whitespace-nowrap">{{ section.From_Time }}</div>
-                            </td> -->
-                            <!-- <td class="text-center">
+                            </td>
+                            <td class="text-center">
                                 <div class="whitespace-nowrap">{{ section.To_Time }}</div>
-                            </td> -->
-                            <!-- <td class="table-report__action">
+                            </td>
+                            <td class="table-report__action">
                                 <div class="flex justify-center items-center">
-                                    <a class="flex items-center text-primary whitespace-nowrap mr-5" href="" title="view">
+                                    <a class="flex items-center text-primary whitespace-nowrap mr-5" href="{% url 'attandance' section.id %}" title="view">
                                         <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
                                     </a>
                                 </div>
-                            </td> -->
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
-            <div class="row text-center">
-                <a data-tw-toggle="modal" data-tw-target="#update_model"><button class="btn btn-primary shadow-md mr-2 mt-5 mb-5">Add Attandance</button></a>
-            </div>
         </div>
         <!-- END: Data List -->
         <!-- BEGIN: Pagination -->

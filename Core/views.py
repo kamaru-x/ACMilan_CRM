@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from u_auth.models import User
-from Core.models import Lead,Students,Center,Coordinator
+from Core.models import Lead,Students,Center,Coordinator,Lead_Updates,Section,Attandance
+from Core.setup_functions import set_students
 # Create your views here.
 
 @login_required
@@ -28,7 +29,8 @@ def add_center(request):
 
 @login_required
 def list_center(request):
-    centers = Center.objects.all()
+    set_students()
+    centers = Center.objects.all().order_by('-id')
     context = {
         'centers':centers
     }
@@ -38,7 +40,7 @@ def list_center(request):
 
 @login_required
 def add_coordinator(request):
-    centers = Center.objects.all()
+    centers = Center.objects.all().order_by('-id')
 
     if request.method ==  'POST':
         f_name = request.POST.get('first_name')
@@ -76,7 +78,7 @@ def add_coordinator(request):
 
 @login_required
 def list_coordinators(request):
-    coordinators = Coordinator.objects.all()
+    coordinators = Coordinator.objects.all().order_by('-id')
 
     context = {
         'coordinators' : coordinators,
@@ -87,7 +89,7 @@ def list_coordinators(request):
 
 @login_required
 def add_lead(request):
-    coordinators = Coordinator.objects.all()
+    coordinators = Coordinator.objects.all().order_by('-id')
     lead = Lead.objects.last()
     
     if lead:
@@ -120,7 +122,7 @@ def add_lead(request):
 
 @login_required
 def list_leads(request):
-    leads = Lead.objects.all()
+    leads = Lead.objects.all().order_by('-id')
     context = {
         'leads' : leads
     }
@@ -131,17 +133,42 @@ def list_leads(request):
 @login_required
 def view_lead(request,id):
     lead = Lead.objects.get(id=id)
+    updates = Lead_Updates.objects.filter(Lead=lead).order_by('-id')
+
+    if request.method == 'POST':
+        update = request.POST.get('update')
+        new_update = Lead_Updates(Lead=lead,Description=update)
+        new_update.save()
+        return redirect('.')
+
     context = {
-        'lead' : lead
+        'lead' : lead,
+        'updates' : updates,
     }
     return render(request,'view_lead.html',context)
 
 ###########################################################################################################
 
 @login_required
+def accept(request,lid):
+    lead = Lead.objects.get(id=lid)
+    lead.Status = 'accepted'
+    lead.save()
+    return redirect('add_student')
+
+@login_required
+def reject(request,lid):
+    lead = Lead.objects.get(id=lid)
+    lead.Status = 'rejected'
+    lead.save()
+    return redirect('list_leads')
+
+###########################################################################################################
+
+@login_required
 def add_student(request):
     student = Students.objects.last()
-    centers = Center.objects.all()
+    centers = Center.objects.all().order_by('-id')
 
     if student:
         refer = f'STUDENT-00{student.id+1}'
@@ -191,10 +218,58 @@ def add_student(request):
 
 @login_required
 def list_students(request):
-    students = Students.objects.all()
+    students = Students.objects.all().order_by('-id')
     context = {
         'students' : students
     }
     return render(request,'list_students.html',context)
+
+###########################################################################################################
+
+@login_required
+def center_attandance(request):
+    set_students()
+    centers = Center.objects.all().order_by('-id')
+    context = {
+        'centers' : centers
+    }
+    return render(request,'attandance_center.html',context)
+
+###########################################################################################################
+
+@login_required
+def sections(request,cid):
+    center = Center.objects.get(id=cid)
+    sections = Section.objects.filter(Center=center).order_by('-id')
+    section = Section.objects.last()
+
+    if section:
+        refer = f'SECTION-00{section.id+1}'
+    else:
+        refer = 'SECTION-001'
+
+    if request.method == 'POST':
+        from_time = request.POST.get('from')
+        to_time = request.POST.get('to')
+
+        new_section = Section(Reference=refer,Center=center,From_Time=from_time,To_Time=to_time)
+        new_section.save()
+        return redirect('.')
+
+    context = {
+        'sections' : sections,
+    }
+    return render(request,'classes.html',context)
+
+###########################################################################################################
+
+@login_required
+def attandance(request,sid):
+    section = Section.objects.get(id=sid)
+    students = Students.objects.filter(Center=section.Center)
+    context = {
+        'students' : students
+    }
+    return render(request,'attandance.html',context)
 
 ###########################################################################################################

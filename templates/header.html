@@ -88,6 +88,13 @@
                     </li>
 
                     <li>
+                        <a href="{% url 'center_attandance' %}" class="menu">
+                            <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                            <div class="menu__title">Attandance</div>
+                        </a>
+                    </li>
+
+                    <li>
                         <a href="javascript:;" class="menu">
                             <div class="menu__icon"> <i data-lucide="shopping-bag"></i> </div>
                             <div class="menu__title"> Reports <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
@@ -219,6 +226,27 @@
                             <a href="{% url 'list_students' %}" class="top-menu">
                                 <div class="top-menu__icon"> <i data-lucide="file-plus"></i> </div>
                                 <div class="top-menu__title"> List Students </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript:;" class="top-menu">
+                        <div class="top-menu__icon"> <i data-lucide="file-text"></i> </div>
+                        <div class="top-menu__title"> Attandance</div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="{% url 'center_attandance' %}" class="top-menu">
+                                <div class="top-menu__icon"> <i data-lucide="user"></i> </div>
+                                <div class="top-menu__title"> Centers </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="top-menu">
+                                <div class="top-menu__icon"> <i data-lucide="file-plus"></i> </div>
+                                <div class="top-menu__title"> Sales Target Report </div>
                             </a>
                         </li>
                     </ul>

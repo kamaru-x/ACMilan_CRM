@@ -29,9 +29,15 @@ class Lead(models.Model):
     Lead_Mode_Text = models.CharField(max_length=100,null=True)
     Coordinator = models.ForeignKey(Coordinator,on_delete=models.DO_NOTHING)
     Contact_Date = models.DateField(auto_now_add=True)
+    Status = models.CharField(max_length=10,default='pending')
 
     def __str__(self):
         return self.Student_Name
+    
+class Lead_Updates(models.Model):
+    Lead = models.ForeignKey(Lead,on_delete=models.SET_NULL,null=True)
+    Date = models.DateField(auto_now_add=True)
+    Description = models.TextField()
     
 class Students(models.Model):
     # basic details
@@ -64,3 +70,24 @@ class Students(models.Model):
 
     def __str__(self):
         return self.Full_Name
+    
+class Section(models.Model):
+    Reference = models.CharField(max_length=15)
+    Date = models.DateField(auto_now_add=True)
+    Center = models.ForeignKey(Center,on_delete=models.SET_NULL,null=True)
+
+    From_Time = models.TimeField()
+    To_Time = models.TimeField()
+
+    def __str__(self):
+        return self.Reference
+    
+
+class Attandance(models.Model):
+    Section = models.ForeignKey(Section,on_delete=models.DO_NOTHING)
+    Student = models.ForeignKey(Students,on_delete=models.DO_NOTHING)
+
+    Attandance = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.Student.Full_Name
