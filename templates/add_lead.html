@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <body class="py-5">
+         <style>
+            .form-control {
+                margin-bottom: 14px;
+            }
+        </style>
+        {% include 'header.html' %}
+         <!-- BEGIN: Content -->
+    <div class="content">
+        
+            <div class="flex items-center mt-8">
+        <!-- <h2 class="intro-y text-lg font-medium mr-auto">Leads</h2> -->
+    </div>
+    <!-- BEGIN: Wizard Layout -->
+    <div class="intro-y box py-10 sm:py-20 mt-5">
+        <h2 style=" font-size: 30px; font-weight: 500; text-align: center;
+        color: #1e40af;">Add Lead</h2>
+        
+        <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-slate-200/60 dark:border-darkmode-400">
+            <!-- <div class="font-medium text-base">Add / Manage Products</div> -->
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
+                    
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="input-wizard-2" class="form-label">Reference</label>
+                        <input id="input-wizard-2" type="text" class="form-control" placeholder="" name="reference" value="{{ refer }}" readonly>
+                    </div>
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="input-wizard-3" class="form-label">Students Name</label>
+                        <input id="input-wizard-3" type="text" class="form-control" placeholder="Enter Coordinator Last Name" name="name">
+                    </div>
+
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="input-wizard-2" class="form-label">Gardian Name</label>
+                        <input id="input-wizard-2" type="text" class="form-control" placeholder="Enter cordinator Center" name="gardian">
+                    </div>
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="input-wizard-3" class="form-label">Contact Number</label>
+                        <input id="input-wizard-3" type="text" class="form-control" placeholder="Enter Coordinator Center" name="contact">
+                    </div>
+
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="input-wizard-2" class="form-label">Location</label>
+                        <input id="input-wizard-2" type="text" class="form-control" placeholder="Enter cordinator Center" name="location">
+                    </div>
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="input-wizard-2" class="form-label">Coordinator</label>
+                        <select name="coordinator" id="" class="form-control">
+                            <option value="">Select Coordinator</option>
+                            {% for coordinator in coordinators %}
+                                <option value="{{ coordinator.id }}">{{ coordinator.first_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="input-wizard-3" class="form-label">Lead Type</label>
+                        <!-- <input id="input-wizard-3" type="text" class="form-control" placeholder="Enter Coordinator Center" name="come_through"> -->
+                        <select name="mode" id="lead_mode" class="form-control">
+                            <option value="online">Online</option>
+                            <option value="offline">Offline</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="intro-y col-span-12 sm:col-span-6" id="lead_text">
+                        <label for="input-wizard-3" class="form-label">Enter Lead Type</label>
+                        <input type="text" class="form-control" placeholder="Enter Coordinator Center" name="mode_text">
+                    </div>
+
+                    <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
+                        <!-- <button class="btn btn-secondary w-24">Add</button> -->
+                        <button type="submit" class="btn btn-primary w-24 ml-2">Create</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- END: Wizard Layout -->
+    </div>
+    </body>
+{% endblock content %}

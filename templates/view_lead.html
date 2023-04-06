@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- END: Head -->
+    <body class="py-5">
+    {% include 'header.html' %}
+      
+<!-- BEGIN: Content -->
+        <div class="content">
+            <div class="intro-y flex items-center mt-8">
+                <!-- <h2 class="text-lg font-medium mr-auto">
+                    Profile Layout
+                </h2> -->
+            </div>
+            <!-- BEGIN: Profile Info -->
+            <div class="intro-y box px-5 pt-5 mt-5 text-center">
+                <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
+                    <div class="flex flex-1 px-5 items-center justify-center text-center">
+                        <div class="">
+                            <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg" style=" color: #2b53d8;">{{ lead.Student_Name }}</div>
+                            <div class="text-slate-500">{{ lead.Location }}</div>
+                        </div>
+                    </div>
+                    <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
+                        <div class="font-medium text-center lg:mt-3 text-success">Contact Details</div>
+                        <div class="flex flex-col justify-center items-center">
+                            <div class="truncate sm:whitespace-normal flex items-center mt-2 mb-2">{{ lead.Gardian_Name }}</div>
+                            <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="phone" class="w-4 h-4 mr-2"></i> {{ lead.Contact_Number }} </div>
+                        </div>
+                        <hr class="mt-2 mb-2">
+                        <div class="font-medium text-center lg:mt-3 text-warning">Coordinator Details</div>
+                        <div class="flex flex-col justify-center items-center">
+                            <div class="truncate sm:whitespace-normal flex items-center mt-2 mb-2">{{ lead.Coordinator.first_name }}</div>
+                            <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="phone" class="w-4 h-4 mr-2"></i> {{ lead.Coordinator.Mobile }} </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END: Profile Info -->
+            <!-- <div class="row md:text-end text-center mt-5">
+                <div class="col-12"><button class="btn btn-primary">Add update</button></div>
+            </div> -->
+             <h2 class="intro-y text-lg font-medium mt-10" style="text-align: center;font-size: 35px;color:#1e40af;padding-bottom: 30px;border-bottom: solid 1px #bcbcbc21;">Updates</h2>
+             <!-- BEGIN: Data List -->
+            <div class="row text-center mt-5">
+                <div class="col-12">
+                    <button class="btn btn-primary">update</button>
+                    <button class="btn btn-primary">schedule</button>
+                    <button class="btn btn-primary">reject</button>
+                    <button class="btn btn-primary">accept</button>
+                </div>
+            </div>
+            <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
+                <div class="intro-y box px-5 pt-5 mt-5">
+                    <div class="col-12 lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
+                        <div class="post__content tab-content">
+                            <div id="content" class="tab-pane p-5 active" role="tabpanel" aria-labelledby="content-tab">
+                                <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
+                                    <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5"> 05-04-2023 </div>
+                                    <div class="mt-5">
+                                        <div class="editor">
+                                            <p>It is a long established</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 mt-5">
+                                    <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5"> 05-04-2023 </div>
+                                    <div class="mt-5">
+                                        <div class="editor">
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- END: Data List -->
+
+         <!-- END: Profile Info -->
+        <h2 class="intro-y text-lg font-medium mt-10" style="text-align: center;font-size: 35px;color:#1e40af; padding-top: 50px;padding-bottom: 30px;border-bottom: solid 1px #bcbcbc21;">Attended Sections</h2>
+             <!-- BEGIN: Data List -->
+        <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
+            <table class="table table-report -mt-2">
+                <thead>
+                    <tr> 
+                        <th class="whitespace-nowrap">COMPANY NAME</th>
+                        <th class="whitespace-nowrap">REFERENCE (LEAD REFERENCE)</th>
+                         <th class="whitespace-nowrap" >TASK TITLE</th>
+                        <th class="whitespace-nowrap"style="text-align: left;"> PRIORITY </th>
+                        <th class="whitespace-nowrap" style="text-align: center;"> DUE DATE </th>
+                        <th class="whitespace-nowrap"> ACTION </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="intro-x">
+                        <td class="w-60">
+                            <a href="task-staff-details.php" class="font-medium whitespace-nowrap text-primary">ABCD International</a>
+                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">4433 6688 / info@abcdintl.com</div>
+                            </div>
+                        </td>
+                        <td class="w-64 ref">
+                            <a href="task-staff-details.php" class="font-medium whitespace-nowrap">REF:12345</a>  
+                        </td>
+                        <td class="w-60 text-left">
+                            <div class="pr-16">Inventory Procurement</div>
+                        </td>
+                        <td class="w-40 text-right text-warning">
+                            <div class="pr-16">Medium</div>
+                        </td>
+                        <td class="text-center">
+                            <div class="flex items-center justify-center whitespace-nowrap text-danger">
+                                    2/10/2023
+                            </div>
+                        </td>
+                        <td>
+                            <a class="flex items-center text-primary whitespace-nowrap mr-5" href="view-task-completed.php">
+                                <i data-lucide="eye" class="w-4 h-4 mr-1"></i> 
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- END: Data List -->
+           
+        <!-- END: Content -->
+
+        <!-- BEGIN: Dark Mode Switcher-->
+        <div data-url="top-menu-dark-regular-form.html" class="dark-mode-switcher cursor-pointer shadow-md fixed bottom-0 right-0 box border rounded-full w-40 h-12 flex items-center justify-center z-50 mb-10 mr-10">
+            <div class="mr-4 text-slate-600 dark:text-slate-200">Dark Mode</div>
+            <div class="dark-mode-switcher__toggle border"></div>
+        </div>
+        <!-- END: Dark Mode Switcher-->
+        <style>
+        .dark-mode-switcher{
+            display: none;
+        }
+        .ref{
+            text-align: center!important;
+        }
+        
+    </style>
+    <!-- BEGIN: New Order Modal -->
+    <div id="new-order-modal2" class="modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="font-medium text-base mr-auto">Add Remarks</h2>
+                </div>
+                <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                    <div class="col-span-12">
+                        <label for="pos-form-1" class="form-label">Date</label>
+                         <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-slate-100 border text-slate-500 dark:bg-darkmode-700 dark:border-darkmode-800 dark:text-slate-400" style="height: 42px;">
+                       <i data-lucide="calendar" class="w-4 h-4"></i>
+                    </div>
+                      <input type="text" class="datepicker pl-12" data-single-mode="true" style="width: 100%!important;">
+                    </div>
+                    <div class="col-span-12">
+                        <label for="pos-form-2" class="form-label">Description</label>
+                        <textarea id="update-profile-form-5" class="form-control" placeholder="Description"></textarea>
+                    </div>
+                    <div class="col-span-12">
+                        <label for="pos-form-3" class="form-label">Upload File</label>
+                        <input id="pos-form-3" type="file" class="form-control flex-1" placeholder="Upload File">
+                    </div>
+                </div>
+                <div class="modal-footer text-right">
+                    <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-32 mr-1">Cancel</button>
+                    <button type="button" class="btn btn-primary w-32">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: New Order Modal -->
+    </body>
+{% endblock content %}

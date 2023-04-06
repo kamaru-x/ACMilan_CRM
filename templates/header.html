@@ -1,0 +1,271 @@
+{% load static %}
+<!-- BEGIN: Mobile Menu -->
+        <div class="mobile-menu md:hidden">
+            <div class="mobile-menu-bar">
+                <a href="" class="flex mr-auto">
+                    <img alt="Vertex Engineering LLC" class="w-6" src="{% static 'images/logo.png' %}">
+                </a>
+                <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+            </div>
+            <div class="scrollable">
+                <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="x-circle" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+                <ul class="scrollable__content py-2">
+                    <li>
+                        <a href="javascript:;.php" class="menu menu--active">
+                            <div class="menu__icon"> <i data-lucide="home"></i> </div>
+                            <div class="menu__title"> Dashboard</div>
+                        </a>
+                        
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="menu">
+                            <div class="menu__icon"> <i data-lucide="box"></i> </div>
+                            <div class="menu__title"> Masters <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
+                        </a>
+                        <ul class="">
+                            <!-- <li>
+                                <a href="{% url 'add_cordinator' %}" class="menu menu--active">
+                                    <div class="menu__icon"> <i data-lucide="box"></i> </div>
+                                    <div class="menu__title"> Add Cordinator </div>
+                                </a>
+                            </li> -->
+                            <li>
+                                <a href="{% url 'list_center' %}" class="menu menu--active">
+                                    <div class="menu__icon"> <i data-lucide="box"></i> </div>
+                                    <div class="menu__title">List Center</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'list_cordinator' %}" class="menu menu--active">
+                                    <div class="menu__icon"> <i data-lucide="box"></i> </div>
+                                    <div class="menu__title">List Cordinators</div>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:;" class="menu">
+                            <div class="menu__icon"> <i data-lucide="shopping-bag"></i> </div>
+                            <div class="menu__title"> Leads <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="{% url 'add_lead' %}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Add Leads </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'list_leads' %}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title">List Leads </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:;" class="menu">
+                            <div class="menu__icon"> <i data-lucide="shopping-bag"></i> </div>
+                            <div class="menu__title"> Students <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="{% url 'add_student' %}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Add Student </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'list_students' %}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title">List Students </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:;" class="menu">
+                            <div class="menu__icon"> <i data-lucide="shopping-bag"></i> </div>
+                            <div class="menu__title"> Reports <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Add Student </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title">List Students </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="javascript:;" class="menu">
+                            <div class="menu__icon"> <i data-lucide="shopping-bag"></i> </div>
+                            <div class="menu__title"> Settings <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Add Student </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title">List Students </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- END: Mobile Menu -->
+        <!-- BEGIN: Top Bar -->
+        <div class="border-b border-white/[0.08] mt-[2.2rem] md:-mt-5 -mx-3 sm:-mx-8 px-3 sm:px-8 pt-3 md:pt-0 mb-10">
+            <div class="top-bar-boxed flex items-center">
+                <!-- BEGIN: Logo -->
+                <a href="" class="-intro-x hidden md:flex">
+                    <img alt="Midone - HTML Admin Template" class="w-6" src="{% static 'images/logo.png' %}">
+                    <span class="text-white text-lg ml-3"> Vertex </span> 
+                </a>
+                <!-- END: Logo -->
+                <!-- BEGIN: Breadcrumb -->
+                <nav aria-label="breadcrumb" class="-intro-x h-full mr-auto">
+                    <ol class="breadcrumb breadcrumb-light">
+                        <li class="breadcrumb-item"><a href="#">Application</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    </ol>
+                </nav>
+                <!-- END: Search -->
+            </div>
+        </div>
+        <!-- END: Top Bar -->
+        <!-- BEGIN: Top Menu -->
+        <nav class="top-nav">
+            <ul>
+                <li>
+                    <a href="{% url 'dashboard' %}" class="top-menu top-menu--active">
+                        <div class="top-menu__icon"> <i data-lucide="home"></i> </div>
+                        <div class="top-menu__title">Dashboard</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="top-menu">
+                        <div class="top-menu__icon"> <i data-lucide="box"></i> </div>
+                        <div class="top-menu__title">Masters</div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="{% url 'list_center' %}" class="top-menu">
+                                <div class="top-menu__icon"> <i data-lucide="box"></i> </div>
+                                <div class="top-menu__title">List Center</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'list_cordinator' %}" class="top-menu">
+                                <div class="top-menu__icon"> <i data-lucide="box"></i> </div>
+                                <div class="top-menu__title">List Coordinator</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" class="top-menu">
+                        <div class="top-menu__icon"> <i data-lucide="briefcase"></i> </div>
+                        <div class="top-menu__title">Leads</div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="{% url 'add_lead' %}" class="top-menu">
+                                <div class="top-menu__icon"> <i data-lucide="user"></i> </div>
+                                <div class="top-menu__title">Add Leads</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'list_leads' %}" class="top-menu">
+                                <div class="top-menu__icon"> <i data-lucide="edit"></i> </div>
+                                <div class="top-menu__title">List Leads</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript:;" class="top-menu">
+                        <div class="top-menu__icon"> <i data-lucide="book-open"></i> </div>
+                        <div class="top-menu__title">Students</div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="{% url 'add_student' %}" class="top-menu">
+                                <div class="top-menu__icon"> <i data-lucide="file-minus"></i> </div>
+                                <div class="top-menu__title"> Add Student </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'list_students' %}" class="top-menu">
+                                <div class="top-menu__icon"> <i data-lucide="file-plus"></i> </div>
+                                <div class="top-menu__title"> List Students </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="javascript:;" class="top-menu">
+                        <div class="top-menu__icon"> <i data-lucide="file-text"></i> </div>
+                        <div class="top-menu__title"> Reports</div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="" class="top-menu">
+                                <div class="top-menu__icon"> <i data-lucide="user"></i> </div>
+                                <div class="top-menu__title"> Salesman Wise </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="top-menu">
+                                <div class="top-menu__icon"> <i data-lucide="file-plus"></i> </div>
+                                <div class="top-menu__title"> Sales Target Report </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript:;" class="top-menu">
+                        <div class="top-menu__icon"> <i data-lucide="settings"></i> </div>
+                        <div class="top-menu__title"> Settings</div>
+                    </a>
+                    <ul class="">
+                        <li>
+                            <a href="" class="top-menu">
+                                <div class="top-menu__icon"> <i data-lucide="key"></i> </div>
+                                <div class="top-menu__title"> Change Password </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="top-menu">
+                                <div class="top-menu__icon"> <i data-lucide="log-out"></i> </div>
+                                <div class="top-menu__title"> Logout </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+               
+            </ul>
+        </nav>
+    <!-- END: Top Menu -->

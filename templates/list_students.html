@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <body class="py-5">
+        {% include 'header.html' %}
+      
+        <!-- BEGIN: Content -->
+    <div class="content">
+
+              <h2 class="intro-y text-lg font-medium mt-10" style="text-align: center;font-size: 35px;color:#1e40af;padding-top: 30px;padding-bottom: 30px;border-bottom: solid 1px #bcbcbc;">Students List</h2>
+         <!--   <div class="intro-y box py-10 sm:py-20 mt-5">
+        <h2 style=" font-size: 30px; font-weight: 500; text-align: center;
+        color: #1e40af;">Add Category</h2>
+    </div> -->
+    <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
+            
+            <div class="hidden xl:block mx-auto text-slate-500"></div>
+            <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
+                <a href="{% url 'add_lead' %}"><button class="btn btn-primary shadow-md mr-2">Add New Lead</button></a>
+                <div class="dropdown ml-auto sm:ml-0">
+                    <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
+                        <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
+                    </button>
+                    <div class="dropdown-menu w-40">
+                        <ul class="dropdown-content">
+                            <li>
+                                <a href="category-add.php" class="dropdown-item"> <i data-lucide="file-plus" class="w-4 h-4 mr-2"></i> New Category </a>
+                            </li>
+                            <li>
+                                <a href="product-add.php" class="dropdown-item"> <i data-lucide="users" class="w-4 h-4 mr-2"></i> New Product </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- BEGIN: Data List -->
+        <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
+            <table class="table table-report -mt-2">
+                <thead>
+                    <tr>
+                        <!-- <th class="whitespace-nowrap">
+                            <input class="form-check-input" type="checkbox">
+                        </th> -->
+                        <th class="whitespace-nowrap text-center">SL. NO.</th>
+                        <th class="whitespace-nowrap text-center">REFERENCE</th>
+                        <th class="whitespace-nowrap text-center">STUDENT NAME</th>
+                        <th class="whitespace-nowrap text-center">DATE OF BIRTH</th>
+                        <th class="whitespace-nowrap text-center">AGE GROUP</th>
+                        <th class="whitespace-nowrap text-center">GUARDIAN</th>
+                        <th class="whitespace-nowrap text-center">PHONE</th>
+                        <th class="whitespace-nowrap text-center">ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                        <tr class="intro-x">
+                            
+                            <td class="w-60 text-center">
+                                <a href="" class=" whitespace-nowrap">{{ forloop.counter }}</a>
+                            </td>
+
+                            <td class="w-60 text-center">
+                                <a href="" class="font-medium whitespace-nowrap">{{ student.Reference }}</a>
+                            </td>
+
+                            <td class="w-60 text-center">
+                                <a href="" class="font-medium whitespace-nowrap">{{ student.Full_Name }}</a>
+                            </td>
+
+                            <td class="w-60 text-center">
+                                <a href="" class="font-medium whitespace-nowrap">{{ student.Date_Of_Birth }}</a>
+                            </td>
+
+                            <td class="w-60 text-center">
+                                <a href="" class="font-medium whitespace-nowrap">{{ student.Age_Group }}</a>
+                            </td>
+
+                            <td class="w-60 text-center">
+                                <a href="" class="font-medium whitespace-nowrap">{{ student.Guardian_Name }}</a>
+                            </td>
+
+                            <td class="w-60 text-center">
+                                <a href="" class="font-medium whitespace-nowrap">{{ student.Guardian_Mobile }}</a>
+                            </td>
+                            
+                            <td class="w-60">
+                                <div class="flex justify-center items-center">
+                                    <a title="View" class="flex items-center text-primary whitespace-nowrap mr-5" href="{% url 'view_lead' student.id %}">
+                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                                    </a>
+                                    <a title="Edit" class="flex items-center text-primary whitespace-nowrap mr-5" href="">
+                                        <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
+                                    </a>
+                                    <a title="Delete" class="flex items-center text-danger whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
+                                        <i data-lucide="trash" class="w-4 h-4 mr-1"></i>
+                                    </a>
+                                </div>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- END: Data List -->
+        <!-- BEGIN: Pagination -->
+        <!-- END: Pagination -->
+    </div>
+    <!-- BEGIN: Delete Confirmation Modal -->
+    <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="p-5 text-center">
+                        <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i>
+                        <div class="text-3xl mt-5">Are you sure?</div>
+                        <div class="text-slate-500 mt-2">Do you really want to delete these records? <br>This process cannot be undone.</div>
+                    </div>
+                    <div class="px-5 pb-8 text-center">
+                        <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
+                        <button type="button" class="btn btn-danger w-24">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Delete Confirmation Modal -->
+    </div>
+    <!-- END: Content -->
+    </body>
+{% endblock content %}
