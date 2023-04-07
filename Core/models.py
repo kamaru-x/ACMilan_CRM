@@ -75,6 +75,7 @@ class Section(models.Model):
     Reference = models.CharField(max_length=15)
     Date = models.DateField(auto_now_add=True)
     Center = models.ForeignKey(Center,on_delete=models.SET_NULL,null=True)
+    Ended = models.BooleanField(default=False)
 
     From_Time = models.TimeField()
     To_Time = models.TimeField()
@@ -87,7 +88,7 @@ class Attandance(models.Model):
     Section = models.ForeignKey(Section,on_delete=models.DO_NOTHING)
     Student = models.ForeignKey(Students,on_delete=models.DO_NOTHING)
 
-    Attandance = models.BooleanField(default=False)
+    Attandance = models.CharField(max_length=15,default='Absent')
 
     def __str__(self):
-        return self.Student.Full_Name
+        return f'{self.Student.Full_Name} {self.Attandance} on {self.Section.Reference}'

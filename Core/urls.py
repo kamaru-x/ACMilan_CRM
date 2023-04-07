@@ -15,5 +15,6 @@ urlpatterns = [
     path('reject/<int:lid>/',views.reject,name='reject'),
     path('attandance-centers/',views.center_attandance,name='center_attandance'),
     path('sections/<int:cid>/',views.sections,name='sections'),
-    path('attandance/<int:sid>/',views.attandance,name='attandance')
+    path('attandance/<int:sid>/',views.attandance,name='attandance'),
+    path('view-attandance/<int:sid>/',views.view_attandance,name='view_attandance'),
 ]

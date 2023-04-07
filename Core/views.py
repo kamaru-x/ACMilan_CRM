@@ -267,9 +267,39 @@ def sections(request,cid):
 def attandance(request,sid):
     section = Section.objects.get(id=sid)
     students = Students.objects.filter(Center=section.Center)
+
+    if request.method == 'POST':
+        attandance = request.POST.getlist('checks[]')
+        
+        for student in students:
+            print (f'student id : {student.id}, attandence : {attandance}')
+            if str(student.id) in attandance:
+                data = Attandance(Section=section,Student=student,Attandance='Precent')
+                data.save()
+            else:
+                data = Attandance(Section=section,Student=student,Attandance='Absent')
+                data.save()
+
+        section.Ended = True
+        section.save()
+
+        return redirect('.')
+
     context = {
         'students' : students
     }
     return render(request,'attandance.html',context)
+
+###########################################################################################################
+
+@login_required
+def view_attandance(request,sid):
+    section = Section.objects.get(id=sid)
+    attandance = Attandance.objects.filter(Section=section)
+    context = {
+        'attandances' : attandance,
+        'section' : section,
+    }
+    return render(request,'view_attandance.html',context)
 
 ###########################################################################################################

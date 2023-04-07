@@ -67,8 +67,13 @@
                             </td>
                             <td class="table-report__action">
                                 <div class="flex justify-center items-center">
-                                    <a class="flex items-center text-primary whitespace-nowrap mr-5" href="{% url 'attandance' section.id %}" title="view">
-                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                                    {% if section.Ended %}
+                                        <a class="flex items-center text-primary whitespace-nowrap mr-5" href="{% url 'view_attandance' section.id %}" title="view">
+                                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                                        </a>
+                                    {% endif %}
+                                    <a title="Edit" class="flex items-center text-primary whitespace-nowrap mr-5" href="{% url 'attandance' section.id %}">
+                                        <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
                                     </a>
                                 </div>
                             </td>
