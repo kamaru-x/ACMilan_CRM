@@ -10,6 +10,7 @@ urlpatterns = [
     path('list-leads/',views.list_leads,name='list_leads'),
     path('view_lead/<int:id>/',views.view_lead,name='view_lead'),
     path('add-student/',views.add_student,name='add_student'),
+    path('view_student/<int:sid>/',views.view_student,name='view_student'),
     path('list-students/',views.list_students,name='list_students'),
     path('accept/<int:lid>/',views.accept,name='accept'),
     path('reject/<int:lid>/',views.reject,name='reject'),

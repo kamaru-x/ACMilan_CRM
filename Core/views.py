@@ -217,6 +217,16 @@ def add_student(request):
 ###########################################################################################################
 
 @login_required
+def view_student(request,sid):
+    student = Students.objects.get(id=sid)
+    context = {
+        'student' : student
+    }
+    return render(request,'view_student.html',context)
+
+###########################################################################################################
+
+@login_required
 def list_students(request):
     students = Students.objects.all().order_by('-id')
     context = {
