@@ -390,7 +390,7 @@ def attandance(request,sid):
         section.Ended = True
         section.save()
 
-        return redirect('.')
+        return redirect('/sections/%s' %section.Center.id)
 
     context = {
         'students' : students
