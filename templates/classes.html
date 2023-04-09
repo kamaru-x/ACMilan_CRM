@@ -72,9 +72,11 @@
                                             <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
                                         </a>
                                     {% endif %}
-                                    <a title="Edit" class="flex items-center text-primary whitespace-nowrap mr-5" href="{% url 'attandance' section.id %}">
-                                        <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
-                                    </a>
+                                    {% if not section.Ended %}
+                                        <a title="Edit" class="flex items-center text-primary whitespace-nowrap mr-5" href="{% url 'attandance' section.id %}">
+                                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
+                                        </a>
+                                    {% endif %}
                                 </div>
                             </td>
                         </tr>

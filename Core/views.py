@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from u_auth.models import User
-from Core.models import Lead,Students,Center,Coordinator,Lead_Updates,Section,Attandance
+from Core.models import Lead,Students,Center,Coordinator,Lead_Updates,Section,Attandance,Lead_Rejection,Payment
 from Core.setup_functions import set_students
+from django.db.models import Q
 # Create your views here.
 
 @login_required
@@ -16,7 +17,9 @@ def add_center(request):
 
     if request.method == 'POST':
         center = request.POST.get('center')
-        new_center = Center(Reference=refer,Name=center)
+        location = request.POST.get('location')
+        address = request.POST.get('address')
+        new_center = Center(Reference=refer,Name=center,Location=location,Address=address)
         new_center.save()
         return redirect('list_center')
 
@@ -31,10 +34,48 @@ def add_center(request):
 def list_center(request):
     set_students()
     centers = Center.objects.all().order_by('-id')
+
+    if request.method == 'POST':
+        c = request.POST.get('id')
+        center = Center.objects.get(id=c)
+        center.delete()
+        return redirect('.')
+
     context = {
         'centers':centers
     }
     return render(request,'list_center.html',context)
+
+###########################################################################################################
+
+@login_required
+def view_center(request,cid):
+    center = Center.objects.get(id=cid)
+    students = Students.objects.filter(Center=center)
+
+    context = {
+        'center' : center,
+        'students' : students
+    }
+    return render(request,'view_center.html',context)
+
+###########################################################################################################
+
+@login_required
+def edit_center(request,cid):
+    center = Center.objects.get(id=cid)
+
+    if request.method == 'POST':
+        center.Name = request.POST.get('center')
+        center.Location = request.POST.get('location')
+        center.Address = request.POST.get('address')
+        center.save()
+        return redirect ('list_center')
+    
+    context = {
+        'center' : center
+    }
+    return render(request,'edit_center.html',context)
 
 ###########################################################################################################
 
@@ -80,10 +121,48 @@ def add_coordinator(request):
 def list_coordinators(request):
     coordinators = Coordinator.objects.all().order_by('-id')
 
+    if request.method == 'POST':
+        c = request.POST.get('id')
+        u = request.POST.get('user')
+        user = User.objects.get(id=u)
+        user.delete()
+        return redirect('.')
+
     context = {
         'coordinators' : coordinators,
     }
     return render(request,'list_coordinators.html',context)
+
+###########################################################################################################
+
+@login_required
+def edit_coordinator(request,cid):
+    coordinator = Coordinator.objects.get(id=cid)
+    centers = Center.objects.exclude(Q(id=coordinator.Center1.id) | Q(id=coordinator.Center2.id))
+
+    if request.method == 'POST':
+        coordinator.User.first_name = request.POST.get('first_name')
+        coordinator.User.last_name = request.POST.get('last_name')
+        c1 = request.POST.get('center1')
+        c2 = request.POST.get('center2')
+        center1 = Center.objects.get(id=c1)
+        center2 = Center.objects.get(id=c2)
+        coordinator.Center1 = center1
+        coordinator.Center2 = center2
+        coordinator.Number1 = request.POST.get('number1')
+        coordinator.Number2 = request.POST.get('number2')
+        coordinator.User.email = request.POST.get('email')
+        coordinator.Place = request.POST.get('place')
+
+        coordinator.User.save()
+        coordinator.save()
+        return redirect('list_cordinator')
+
+    context = {
+        'coordinator' : coordinator,
+        'centers' : centers
+    }
+    return render(request,'edit_coordinator.html',context)
 
 ###########################################################################################################
 
@@ -134,16 +213,27 @@ def list_leads(request):
 def view_lead(request,id):
     lead = Lead.objects.get(id=id)
     updates = Lead_Updates.objects.filter(Lead=lead).order_by('-id')
+    rejection = Lead_Rejection.objects.filter(Lead=lead).last()
 
     if request.method == 'POST':
-        update = request.POST.get('update')
-        new_update = Lead_Updates(Lead=lead,Description=update)
-        new_update.save()
-        return redirect('.')
+        if request.POST.get('update'):
+            update = request.POST.get('update')
+            new_update = Lead_Updates(Lead=lead,Description=update)
+            new_update.save()
+            return redirect('.')
+        
+        if request.POST.get('reason'):
+            reason = request.POST.get('reason')
+            rejecton = Lead_Rejection(Lead=lead,Reason=reason)
+            rejecton.save()
+            lead.Status = 'rejected'
+            lead.save()
+            return redirect('.')
 
     context = {
         'lead' : lead,
         'updates' : updates,
+        'rejection' : rejection,
     }
     return render(request,'view_lead.html',context)
 
@@ -155,13 +245,6 @@ def accept(request,lid):
     lead.Status = 'accepted'
     lead.save()
     return redirect('add_student')
-
-@login_required
-def reject(request,lid):
-    lead = Lead.objects.get(id=lid)
-    lead.Status = 'rejected'
-    lead.save()
-    return redirect('list_leads')
 
 ###########################################################################################################
 
@@ -219,8 +302,22 @@ def add_student(request):
 @login_required
 def view_student(request,sid):
     student = Students.objects.get(id=sid)
+    attandance = Attandance.objects.filter(Student=student)
+    payments = Payment.objects.filter(Student=student)
+
+    if request.method == 'POST' :
+        date = request.POST.get('date')
+        amount = request.POST.get('amount')
+        description = request.POST.get('description')
+
+        payment = Payment(Student=student,Date=date,Amount=amount,Description=description)
+        payment.save()
+        return redirect('.')
+
     context = {
-        'student' : student
+        'student' : student,
+        'attandance' : attandance,
+        'payments' : payments,
     }
     return render(request,'view_student.html',context)
 

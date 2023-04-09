@@ -10,30 +10,15 @@
                     <div class="grid grid-cols-12 gap-6">
                         <!-- BEGIN: General Report -->
                         <div class="col-span-12 mt-8">
-                            <!-- <div class="intro-y flex items-center h-10">
-                                <h2 class="text-lg font-medium truncate mr-5">
-                                    General Summary
-                                </h2>
-                                <a href="" class="ml-auto flex items-center text-danger"> <i data-lucide="alert-triangle" class="w-4 h-4 mr-3"></i> You have 3 meetings today </a>
-                                <a href="" class="ml-auto flex items-center text-primary"> <i data-lucide="refresh-ccw" class="w-4 h-4 mr-3"></i> Reload Data </a>
-                            </div> -->
                             <div class="grid grid-cols-12 gap-6 mt-5">
                                 <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                                     <div class="report-box zoom-in">
                                         <div class="box p-5">
                                             <div class="flex">
                                                 <i data-lucide="briefcase" class="report-box__icon text-primary"></i> 
-                                                <div class="ml-auto">
-                                                    <div class="report-box__indicator bg-success tooltip cursor-pointer mr-3" title="60% Success" style="float: left;"> 200 <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
-                                                    <div class="report-box__indicator bg-danger tooltip cursor-pointer" title="40% Failed" style="float: left;"> 171 <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i> </div>
-                                                </div>
                                             </div>
                                             <div class="text-3xl font-medium leading-8 mt-6">471</div>
-                                            <div class="text-base text-slate-500 mt-1">Total Leads</div>
-                                            <!-- <div class="pt-3 pb-5" style="width:100%;">
-                                                <div class="alert-success p-1" style="width:60%; float: left; text-align: center;" title="60% Success">300</div>
-                                                <div class="alert-danger p-1" style="width:40%; float: left; text-align: center;" title="40% Failed">171</div>
-                                            </div> -->
+                                            <div class="text-base text-slate-500 mt-1">Total Centers</div>
                                         </div>
                                     </div>
                                 </div>
@@ -42,13 +27,9 @@
                                         <div class="box p-5">
                                             <div class="flex">
                                                 <i data-lucide="credit-card" class="report-box__icon text-pending"></i> 
-                                                <div class="ml-auto">
-                                                    <div class="report-box__indicator bg-success tooltip cursor-pointer mr-3" title="87% Success" style="float: left;"> 100 <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
-                                                    <div class="report-box__indicator bg-danger tooltip cursor-pointer" title="13% Failed" style="float: left;"> 21 <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i> </div>
-                                                </div>
                                             </div>
                                             <div class="text-3xl font-medium leading-8 mt-6">121</div>
-                                            <div class="text-base text-slate-500 mt-1">Total Opportunities</div>
+                                            <div class="text-base text-slate-500 mt-1">Total Cordinators</div>
                                         </div>
                                     </div>
                                 </div>
@@ -57,14 +38,9 @@
                                         <div class="box p-5">
                                             <div class="flex">
                                                 <i data-lucide="clipboard" class="report-box__icon text-warning"></i> 
-                                                <div class="ml-auto">
-                                                    <div class="report-box__indicator bg-success tooltip cursor-pointer mr-3" title="70% Success" style="float: left;"> 85 <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
-                                                    <div class="report-box__indicator bg-warning tooltip cursor-pointer mr-3" title="20% Pending" style="float: left;"> 15 <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i> </div>
-                                                    <div class="report-box__indicator bg-danger tooltip cursor-pointer" title="10% Failed" style="float: left;"> 10 <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i> </div>
-                                                </div>
                                             </div>
                                             <div class="text-3xl font-medium leading-8 mt-6">110</div>
-                                            <div class="text-base text-slate-500 mt-1">Total Proposals</div>
+                                            <div class="text-base text-slate-500 mt-1">Total Leads</div>
                                         </div>
                                     </div>
                                 </div>
@@ -73,12 +49,9 @@
                                         <div class="box p-5">
                                             <div class="flex">
                                                 <i data-lucide="users" class="report-box__icon text-success"></i> 
-                                                <div class="ml-auto">
-                                                    <div class="report-box__indicator bg-success tooltip cursor-pointer" title="22 new this month"> 22 new this month <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
-                                                </div>
                                             </div>
                                             <div class="text-3xl font-medium leading-8 mt-6">102</div>
-                                            <div class="text-base text-slate-500 mt-1">Total Clients</div>
+                                            <div class="text-base text-slate-500 mt-1">Total Students</div>
                                         </div>
                                     </div>
                                 </div>
@@ -210,11 +183,5 @@
             <div class="dark-mode-switcher__toggle border"></div>
         </div>
         <!-- END: Dark Mode Switcher-->
-        
-        <!-- BEGIN: JS Assets-->
-        <!-- <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>
-        <script src="{% static 'js/app.js' %}"></script> -->
-        END: JS Assets
     </body>
 {% endblock content %}

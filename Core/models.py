@@ -6,10 +6,14 @@ from u_auth.models import User
 class Center(models.Model):
     Reference = models.CharField(max_length=15)
     Name = models.CharField(max_length=50)
+    Location = models.CharField(max_length=50)
+    Address = models.TextField()
     Students = models.IntegerField(default=0)
 
     def __str__(self):
         return self.Name
+    
+###########################################################################################################
     
 class Coordinator(models.Model):
     User = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -18,6 +22,11 @@ class Coordinator(models.Model):
     Number1 = models.CharField(max_length=15,null=True)
     Number2 = models.CharField(max_length=15,null=True)
     Place = models.CharField(max_length=50,null=True)
+
+    def __str__(self):
+        return self.User.first_name
+
+###########################################################################################################
 
 class Lead(models.Model):
     Reference = models.CharField(max_length=15)
@@ -34,10 +43,27 @@ class Lead(models.Model):
     def __str__(self):
         return self.Student_Name
     
+###########################################################################################################
+    
 class Lead_Updates(models.Model):
     Lead = models.ForeignKey(Lead,on_delete=models.SET_NULL,null=True)
     Date = models.DateField(auto_now_add=True)
     Description = models.TextField()
+
+    def __str__(self):
+        return self.Lead.Reference
+
+###########################################################################################################
+
+class Lead_Rejection(models.Model):
+    Lead = models.ForeignKey(Lead,on_delete=models.DO_NOTHING)
+    Date = models.DateField(auto_now_add=True)
+    Reason = models.TextField()
+
+    def __str__(self):
+        return self.Lead.Reference
+
+###########################################################################################################
     
 class Students(models.Model):
     # basic details
@@ -71,6 +97,8 @@ class Students(models.Model):
     def __str__(self):
         return self.Full_Name
     
+###########################################################################################################
+    
 class Section(models.Model):
     Reference = models.CharField(max_length=15)
     Date = models.DateField(auto_now_add=True)
@@ -83,7 +111,8 @@ class Section(models.Model):
     def __str__(self):
         return self.Reference
     
-
+###########################################################################################################
+    
 class Attandance(models.Model):
     Section = models.ForeignKey(Section,on_delete=models.DO_NOTHING)
     Student = models.ForeignKey(Students,on_delete=models.DO_NOTHING)
@@ -92,3 +121,14 @@ class Attandance(models.Model):
 
     def __str__(self):
         return f'{self.Student.Full_Name} {self.Attandance} on {self.Section.Reference}'
+    
+###########################################################################################################
+
+class Payment(models.Model):
+    Student = models.ForeignKey(Students,on_delete=models.CASCADE)
+    Date = models.DateField(null=True)
+    Amount = models.FloatField(null=True)
+    Description = models.TextField(null=True)
+
+    def __str__(self):
+        return self.Student.Full_Name

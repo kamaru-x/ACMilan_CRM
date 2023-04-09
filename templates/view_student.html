@@ -9,53 +9,65 @@
         <!--profile content Start-->
         <div class="intro-y box px-5 pt-5 mt-5">
             <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
-                <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
-                    <div class="w-20 h-20 sm:w-24 sm:h-24 flex-none lg:w-32 lg:h-32 image-fit relative">
+                <div class="flex flex-1 px-5 items-center justify-center">
+                    <div class="w-20 h-20 sm:w-24 sm:h-24 flex-none lg:w-32 lg:h-32 image-fit relative pl-5">
                         <img alt="Midone - HTML Admin Template" class="rounded-full" src="http://rubick.left4code.com/dist/images/profile-9.jpg">
-                        <div class="absolute mb-1 mr-1 flex items-center justify-center bottom-0 right-0 bg-primary rounded-full p-2">
+                        <!-- <div class="absolute mb-1 mr-1 flex items-center justify-center bottom-0 right-0 bg-primary rounded-full p-2">
                             <i class="w-4 h-4 text-white" data-lucide="camera"></i>
-                        </div>
+                        </div> -->
                     </div>
-                    <div class="ml-5">
-                        <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">Christian Bale</div>
-                        <div class="text-slate-500">Backend Engineer</div>
+                    <div class="ml-5 pl-5">
+                        <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">{{ student.Full_Name }}</div>
+                        <div class="text-slate-500">{{ student.Date_Of_Birth }}</div>
+                        <!-- <div class="text-slate-500">{{ student.Playing_Position }}</div> -->
                     </div>
                 </div>
                 <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
                     <div class="font-medium text-center lg:text-left lg:mt-3">Contact Details</div>
-                    <div class="flex flex-col justify-center items-center lg:items-start mt-4">
-                        <div class="truncate sm:whitespace-normal flex items-center">
-                            <i data-lucide="mail" class="w-4 h-4 mr-2"></i> christianbale@left4code.com
+                    <div class="flex flex-col justify-center items-center lg:items-start mt-1">
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Mobile : {{ student.Phone }}
                         </div>
                         <div class="truncate sm:whitespace-normal flex items-center mt-3">
-                            <i data-lucide="instagram" class="w-4 h-4 mr-2"></i> Instagram Christian Bale
+                            Email : {{ student.Email }}
                         </div>
                         <div class="truncate sm:whitespace-normal flex items-center mt-3">
-                            <i data-lucide="twitter" class="w-4 h-4 mr-2"></i> Twitter Christian Bale
+                            Gardian Name : {{ student.Guardian_Name }}
+                        </div>
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Gardian Number : {{ student.Guardian_Mobile }}
+                        </div>
+                    </div>
+                    <hr class="mt-3 mb-3">
+                    <div class="font-medium text-center lg:text-left lg:mt-3">Other Details</div>
+                    <div class="flex flex-col justify-center items-center lg:items-start mt-1">
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Address : {{ student.Street_Address }}
+                        </div>
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            City : {{ student.City }} | State : {{ student.State }} | Zip_Code : {{ student.Zip_Code }}
                         </div>
                     </div>
                 </div>
                 <div class="mt-6 lg:mt-0 flex-1 px-5 border-t lg:border-0 border-slate-200/60 dark:border-darkmode-400 pt-5 lg:pt-0">
-                    <div class="font-medium text-center lg:text-left lg:mt-5">Sales Growth</div>
-                    <div class="flex items-center justify-center lg:justify-start mt-2">
-                        <div class="mr-2 w-20 flex">
-                            USP: <span class="ml-3 font-medium text-success">+23%</span>
+                    <div class="font-medium text-center lg:text-left lg:mt-5">Center Details</div>
+                    <div class="flex flex-col justify-center items-center lg:items-start mt-4">
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Center : {{ student.Center.Name }}
                         </div>
-                        <div class="w-3/4">
-                            <div class="h-[55px]">
-                                <canvas class="simple-line-chart-1 -mr-5"></canvas>
-                            </div>
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Age_Group : {{ student.Age_Group }}
                         </div>
-                    </div>
-                    <div class="flex items-center justify-center lg:justify-start">
-                        <div class="mr-2 w-20 flex">
-                            STP: <span class="ml-3 font-medium text-danger">-2%</span>
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Playing Position : {{ student.Playing_Position }}
                         </div>
-                        <div class="w-3/4">
-                            <div class="h-[55px]">
-                                <canvas class="simple-line-chart-2 -mr-5"></canvas>
-                            </div>
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            ID_Proof : {{ student.ID_Proof }}
                         </div>
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Travel_Mode : {{ student.Travel_Mode }}
+                        </div>
+                        <hr class="mt-3 mb-3">
                     </div>
                 </div>
             </div>
@@ -66,153 +78,86 @@
             <div class="grid grid-cols-12 gap-6">
                 <div class="intro-y box col-span-12 lg:col-span-6">
                     <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                        <h2 class="font-medium text-base mr-auto">Top Categories</h2>
+                        <h2 class="font-medium text-base mr-auto">Payment</h2>
                         <div class="dropdown ml-auto">
-                            <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown">
-                                <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i>
-                            </a>
-                            <div class="dropdown-menu w-40">
-                            <ul class="dropdown-content">
-                                <li>
-                                    <a href="" class="dropdown-item">
-                                        <i data-lucide="plus" class="w-4 h-4 mr-2"></i> Add Category
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="" class="dropdown-item">
-                                        <i data-lucide="settings" class="w-4 h-4 mr-2"></i> Settings
-                                    </a>
-                                </li>
-                            </ul>
-                            </div>
+                            <button class="btn btn-success text-white" data-tw-toggle="modal" data-tw-target="#payment-modal">Add payment</button>
                         </div>
                     </div>
                     <div class="p-5">
-                        <div class="flex flex-col sm:flex-row">
-                            <div class="mr-auto">
-                                <a href="" class="font-medium">Wordpress Template</a>
-                                <div class="text-slate-500 mt-1">HTML, PHP, Mysql</div>
-                            </div>
-                            <div class="flex">
-                                <div class="w-32 -ml-2 sm:ml-0 mt-5 mr-auto sm:mr-5">
-                                    <div class="h-[30px]">
-                                        <canvas class="simple-line-chart-1" data-random="true"></canvas>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="font-medium">6.5k</div>
-                                    <div class="bg-success/20 text-success rounded px-2 mt-1.5">+150</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-col sm:flex-row mt-5">
-                            <div class="mr-auto">
-                                <a href="" class="font-medium">Bootstrap HTML Template</a>
-                                <div class="text-slate-500 mt-1">HTML, PHP, Mysql</div>
-                            </div>
-                            <div class="flex">
-                                <div class="w-32 -ml-2 sm:ml-0 mt-5 mr-auto sm:mr-5">
-                                    <div class="h-[30px]">
-                                        <canvas class="simple-line-chart-1" data-random="true"></canvas>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="font-medium">2.5k</div>
-                                    <div class="bg-pending/10 text-pending rounded px-2 mt-1.5">+150</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-col sm:flex-row mt-5">
-                            <div class="mr-auto">
-                                <a href="" class="font-medium">Tailwind HTML Template</a>
-                                <div class="text-slate-500 mt-1">HTML, PHP, Mysql</div>
-                            </div>
-                            <div class="flex">
-                                <div class="w-32 -ml-2 sm:ml-0 mt-5 mr-auto sm:mr-5">
-                                    <div class="h-[30px]">
-                                        <canvas class="simple-line-chart-1" data-random="true"></canvas>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="font-medium">3.4k</div>
-                                    <div class="bg-primary/10 text-primary rounded px-2 mt-1.5">+150</div>
-                                </div>
-                            </div>
-                        </div>
+                        <table class="table table-report -mt-2">
+                            <thead>
+                                <tr>
+                                    <th class="whitespace-nowrap text-center">Date</th>
+                                    <th class="whitespace-nowrap text-center">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for payment in payments %}
+                                <tr class="intro-x">
+                                    <td class="text-center">
+                                        <a href="" class=" whitespace-nowrap">{{ payment.Date }}</a>
+                                    </td>
+        
+                                    <td class="text-center">
+                                        <a href="" class="font-medium whitespace-nowrap">{{ payment.Amount }}</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             <div class="intro-y box col-span-12 lg:col-span-6">
                 <div class="flex items-center px-5 py-5 sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <h2 class="font-medium text-base mr-auto">Latest Tasks</h2>
-                    <div class="dropdown ml-auto sm:hidden">
-                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown">
-                            <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i>
-                        </a>
-                        <div class="nav nav-tabs dropdown-menu w-40" role="tablist">
-                            <ul class="dropdown-content">
-                                <li>
-                                    <a id="latest-tasks-mobile-new-tab" href="javascript:;" data-tw-toggle="tab" data-tw-target="#latest-tasks-new" class="dropdown-item" role="tab" aria-controls="latest-tasks-new" aria-selected="true">New</a>
-                                </li>
-                                <li>
-                                    <a id="latest-tasks-mobile-last-week-tab" href="javascript:;" data-tw-toggle="tab" data-tw-target="#latest-tasks-last-week" class="dropdown-item" role="tab" aria-selected="false">Last Week</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <ul class="nav nav-link-tabs w-auto ml-auto hidden sm:flex" role="tablist">
-                        <li id="latest-tasks-new-tab" class="nav-item" role="presentation">
-                            <a href="javascript:;" class="nav-link py-5 active" data-tw-target="#latest-tasks-new" aria-controls="latest-tasks-new" aria-selected="true" role="tab">New</a>
-                        </li>
-                        <li id="latest-tasks-last-week-tab" class="nav-item" role="presentation">
-                            <a href="javascript:;" class="nav-link py-5" data-tw-target="#latest-tasks-last-week" aria-selected="false" role="tab">Last Week</a>
-                        </li>
-                    </ul>
+                    <h2 class="font-medium text-base mr-auto mt-5 mb-5">Latest Tasks</h2>
                 </div>
                 <div class="p-5">
                     <div class="tab-content">
-                        <div id="latest-tasks-new" class="tab-pane active" role="tabpanel" aria-labelledby="latest-tasks-new-tab">
+                        <!-- <div id="latest-tasks-new" class="tab-pane active" role="tabpanel" aria-labelledby="latest-tasks-new-tab">
+                            {% for a in attandance %}
                             <div class="flex items-center">
                                 <div class="border-l-2 border-primary dark:border-primary pl-4">
-                                    <a href="" class="font-medium">Create New Campaign</a>
-                                    <div class="text-slate-500">10:00 AM</div>
+                                    <a href="" class="font-medium">{{ a.Section }}</a>
+                                    <div class="text-slate-500">{{ a.Section.Date }}</div>
                                 </div>
-                                <div class="form-check form-switch ml-auto">
-                                    <input class="form-check-input" type="checkbox">
-                                </div>
-                            </div>
-                            <div class="flex items-center mt-5">
-                                <div class="border-l-2 border-primary dark:border-primary pl-4">
-                                    <a href="" class="font-medium">Meeting With Client</a>
-                                    <div class="text-slate-500">02:00 PM</div>
-                                </div>
-                                <div class="form-check form-switch ml-auto">
-                                    <input class="form-check-input" type="checkbox">
+                                <div class="form-check form-switch ml-auto mr-10 pr-10">
+                                    <div class="text-slate-500">{{ a.Attandance }}</div>
                                 </div>
                             </div>
-                            <div class="flex items-center mt-5">
-                                <div class="border-l-2 border-primary dark:border-primary pl-4">
-                                    <a href="" class="font-medium">Create New Repository</a>
-                                    <div class="text-slate-500">04:00 PM</div>
-                                </div>
-                                <div class="form-check form-switch ml-auto">
-                                    <input class="form-check-input" type="checkbox">
-                                </div>
-                            </div>
-                        </div>
+                            {% endfor %}
+                        </div> -->
+                        <table class="table table-report -mt-2">
+                            <thead>
+                                <tr>
+                                    <th class="whitespace-nowrap text-center">Date</th>
+                                    <th class="whitespace-nowrap text-center">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for a in attandance %}
+                                <tr class="intro-x">
+                                    <td class="text-center">
+                                        <a href="" class=" whitespace-nowrap">{{ a.Section.Date }}</a>
+                                    </td>
+        
+                                    <td class="text-center">
+                                        <a href="" class="font-medium whitespace-nowrap">{{ a.Attandance }}</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
         <!-- payment section end -->
         <!-- table start -->
-        <div class="intro-y box col-span-12 lg:col-span-6 mt-5">
+        <!-- <div class="intro-y box col-span-12 lg:col-span-6 mt-5">
             <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
                 <table class="table table-report -mt-2">
                     <thead>
                         <tr>
-                            <!-- <th class="whitespace-nowrap">
-                                <input class="form-check-input" type="checkbox">
-                            </th> -->
                             <th class="whitespace-nowrap text-center">SL. NO.</th>
                             <th class="whitespace-nowrap text-center">REFERENCE</th>
                             <th class="whitespace-nowrap text-center">STUDENT NAME</th>
@@ -240,9 +185,45 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div> -->
         <!-- table end -->
     </div>
     <!-- END: General Report -->
+    <!-- BEGIN: Modal Content -->
+    <div id="payment-modal" class="modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- BEGIN: Modal Header -->
+                <div class="modal-header text-center">
+                    <h2 class="font-medium text-base mr-auto text-center">Enter rejection reason</h2>
+                </div>
+                <!-- END: Modal Header -->
+                <!-- BEGIN: Modal Body -->
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                        <div class="col-span-12 sm:col-span-12">
+                            <label for="modal-form-1" class="form-label">Date</label>
+                            <input id="modal-form-1" type="date" name="date" class="form-control">
+                        </div>
+                        <div class="col-span-12 sm:col-span-12">
+                            <label for="modal-form-1" class="form-label">Amount</label>
+                            <input id="modal-form-1" type="number" name="amount" class="form-control">
+                        </div>
+                        <div class="col-span-12 sm:col-span-12">
+                            <label for="modal-form-1" class="form-label">Description</label>
+                            <textarea name="description" id="" cols="30" rows="5" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1">Cancel</button>
+                        <button type="submit" class="btn btn-primary w-20">Add</button>
+                    </div>
+                </form>
+                <!-- END: Modal Footer -->
+            </div>
+        </div>
+    </div>
+    <!-- END: Modal Content -->
 </body>
 {% endblock content %}
